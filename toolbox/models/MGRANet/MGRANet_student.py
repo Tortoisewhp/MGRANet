@@ -337,39 +337,6 @@ if __name__ == '__main__':
     img = torch.randn(1, 3, 416, 416).cuda()
     depth = torch.randn(1, 3, 416, 416).cuda()
     model = MGRANet_student().to(torch.device("cuda:0"))
-    new_weights = model.state_dict().items()
-    # for k, v in new_weights:
-    #     print(k, v.shape)
-    print('Newmodel.state_dict().items()', len(model.state_dict().items()))
-    path = "/home/wby/Desktop/项目框架/RGBDMirrorSegmentation/toolbox/models/MGRANet/222model.pth"
-    originModel = torch.load(path, map_location='cuda:0').items()
-
-    print('originModel', len(originModel))
-    for (k1, v1),(k2,v2) in zip(originModel,new_weights):
-        if v1.shape !=v2.shape:
-            print(k1,'---',k2 ,'---',v1.shape,'---',v2.shape)
-    pretrain_weights = {list(new_weights)[i][0]: list(originModel)[i][1] for i in range(len(originModel))}
-    # model.state_dict().update(pretrain_weights)
-    model.load_state_dict(pretrain_weights, strict=True)
-    import os
-
-    torch.save(pretrain_weights, os.path.join('/home/wby/Desktop/项目框架/RGBDMirrorSegmentation/toolbox/models/MGRANet/',
-                                              'MGRANet_student.pth'))
-    Total_params = 0
-    Trainable_params = 0
-    NonTrainable_params = 0
-    import numpy as np
-
-    for param in model.parameters():
-        mulValue = np.prod(param.size())
-        Total_params += mulValue
-        if param.requires_grad:
-            Trainable_params += mulValue
-        else:
-            NonTrainable_params += mulValue
-    print(f'Total params: {Total_params}')
-    print(f'Trainable params: {Trainable_params}')
-    print(f'Non-trainable params: {NonTrainable_params}')
     out = model(img, depth)
     for i in range(len(out[0])):
         print(out[0][i].shape)
