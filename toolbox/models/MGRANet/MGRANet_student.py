@@ -53,7 +53,7 @@ class GCN(nn.Module):
         z = self.relu(z)
         z = z.transpose(1, 2).contiguous()
         return z
-
+#ARE
 class GPM(nn.Module):
     def __init__(self, inplance, num_points, thresholds=0.8):
         super(GPM, self).__init__()
