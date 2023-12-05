@@ -20,9 +20,9 @@ class CSAM(nn.Module):
         x = self.conv1(x)
         return self.sigmoid(x)
 
-class MDR(nn.Module):
+class FAD(nn.Module):
     def __init__(self,Channel_S,Channel_T,TransToChannel):
-        super(MDR, self).__init__()
+        super(FAD, self).__init__()
         self.MSE = nn.MSELoss(reduction='mean')
         self.TransToChannelTeacher = nn.Conv2d(Channel_T, TransToChannel, kernel_size=1, stride=1, padding=0, bias=False)
         self.TransToChannelStudent = nn.Conv2d(Channel_S, TransToChannel, kernel_size=1, stride=1, padding=0, bias=False)
