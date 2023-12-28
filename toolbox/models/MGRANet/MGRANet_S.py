@@ -284,10 +284,10 @@ class decoder(nn.Module):
         seg_body_outs=self.body_out(self.body_out_pre(x))
         seg_edge_outs=self.edge_out(self.edge_out_pre(x))
         return nn.Sigmoid()(seg_final_outs), nn.Sigmoid()(seg_body_outs), nn.Sigmoid()(seg_edge_outs),x
-
-class MGRANet_student(nn.Module):
+#
+class MGRANet_S(nn.Module):
     def __init__(self, channel=32):
-        super(MGRANet_student, self).__init__()
+        super(MGRANet_S, self).__init__()
         # Backbone
         self.rgb = mit_b0()#b0 32 64 160 256
         self.depth = mit_b0()
@@ -337,7 +337,7 @@ class MGRANet_student(nn.Module):
 if __name__ == '__main__':
     img = torch.randn(1, 3, 416, 416).cuda()
     depth = torch.randn(1, 3, 416, 416).cuda()
-    model = MGRANet_student().to(torch.device("cuda:0"))
+    model = MGRANet_S().to(torch.device("cuda:0"))
     out = model(img, depth)
     for i in range(len(out[0])):
         print(out[0][i].shape)
