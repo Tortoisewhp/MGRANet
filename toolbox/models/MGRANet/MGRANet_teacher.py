@@ -54,9 +54,9 @@ class GCN(nn.Module):
         z = z.transpose(1, 2).contiguous()
         return z
 
-class GPM(nn.Module):
+class ARE(nn.Module):
     def __init__(self, inplance, num_points, thresholds=0.8):
-        super(GPM, self).__init__()
+        super(ARE, self).__init__()
         self.num_points = num_points
         self.thresholds = thresholds
         self.gcn = GCN(num_points, inplance)
@@ -182,9 +182,9 @@ class DGCN(nn.Module):
         out = self.final(torch.cat((spatial_local_feat, g_out), 1))
         return nn.Sigmoid()(out)
 
-class MGRAM(nn.Module):
+class MGRA(nn.Module):
     def __init__(self, in_channel, out_channel):
-        super(MGRAM, self).__init__()
+        super(MGRA, self).__init__()
         self.relu = nn.ReLU(True)
         self.branch0 = nn.Sequential(
             BasicConv2d(in_channel, out_channel, 1),
@@ -292,9 +292,9 @@ class MGRANet_teacher(nn.Module):
         self.rgb = mit_b5()#b5 64, 128, 320, 512
         self.depth = mit_b5()
         # Decoder
-        self.gpm=GPM(channel, 96, 0.8)
+        self.are=ARE(channel, 96, 0.8)
         self.con1_1=nn.Conv2d(64,1,1,bias=False)
-        self.mgram = MGRAM(512,512)
+        self.mgra = MGRA(512,512)
         self.DL4 = decoder(channel, 512, 512)
         self.DL3 = decoder(channel, 320, channel)
         self.DL2 = decoder(channel, 128, channel)
@@ -317,12 +317,12 @@ class MGRANet_teacher(nn.Module):
         x4_1 = x4_1+x4_1_depth
 
         #fusedFeature=[x1_1,x2_1,x3_1,x4_1]
-        #GPM
+        #ARE
         edge=self.con1_1(x1_1)
-        x1_1=self.gpm(x1_1.float(),edge)
+        x1_1=self.are(x1_1.float(),edge)
 
-        #MGRAM
-        x4_2 = self.mgram(x4_1)
+        #MGRA
+        x4_2 = self.mgra(x4_1)
 
         #Decoder Layer (DL)
         seg_final_outs4, seg_body_outs4, seg_edge_outs4, x4 = self.DL4(x4_2, x4_1, x1_1)
