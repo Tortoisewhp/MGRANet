@@ -4,7 +4,7 @@ from skimage.color import rgb2gray
 from skimage.io import imread
 import numpy as np
 import matplotlib.pyplot as plt
-
+#
 im = rgb2gray(imread('./depth.png'))
 print(np.max(im))
 im[im <= 0.5] = 0
