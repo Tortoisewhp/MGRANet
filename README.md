@@ -2,8 +2,8 @@
 MGRANet-S*
 
 **Motivation Figure**
-![Image text]([https://github.com/Tortoisewhp/MGRANet/images/1.png](https://github.com/Tortoisewhp/MGRANet/blob/main/images/1.png))
-![Image text]([https://github.com/Tortoisewhp/MGRANet/images/2.png](https://github.com/Tortoisewhp/MGRANet/blob/main/images/2.png))
+![](https://github.com/Tortoisewhp/MGRANet/blob/main/images/1.png)
+![](https://github.com/Tortoisewhp/MGRANet/blob/main/images/2.png)
 
 Best weights for the proposed MGRANet-T and MGRANet-S* networks Link: https://pan.baidu.com/s/1tfaLLsJC67YqwblaHiwRog Extraction code: MGRA
 
