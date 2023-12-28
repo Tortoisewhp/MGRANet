@@ -1,6 +1,11 @@
-#
-# MGRANet
-Best weights for the proposed MGRANet-teacher and MGRANet-student networks Link: https://pan.baidu.com/s/1tfaLLsJC67YqwblaHiwRog Extraction code: MGRA
+
+**(MGRANet-S*)**
+
+**Motivation Figure**
+![Image text](https://github.com/Tortoisewhp/MGRANet/tree/main/images/1.png)
+![Image text](https://github.com/Tortoisewhp/MGRANet/tree/main/images/2.png)
+
+Best weights for the proposed MGRANet-T and MGRANet-S* networks Link: https://pan.baidu.com/s/1tfaLLsJC67YqwblaHiwRog Extraction code: MGRA
 
 Network prediction The test code for the test set  is evaluate_mirror_segmentation.py (graph test)
 
