@@ -5,13 +5,13 @@ MGRANet-S*
 
 ![](https://github.com/Tortoisewhp/MGRANet/blob/main/images/1.png)
 
-Therefore, we propose DPA, ARE, MGRA
+**Therefore, we propose DPA, ARE, MGRA**
 
 **Motivation Figure2**
 
 ![](https://github.com/Tortoisewhp/MGRANet/blob/main/images/2.png)
 
-Therefore, we propose CSD and FAD
+**Therefore, we propose CSD and FAD**
 
 Best weights for the proposed MGRANet-T and MGRANet-S* networks Link: https://pan.baidu.com/s/1tfaLLsJC67YqwblaHiwRog Extraction code: MGRA
 
